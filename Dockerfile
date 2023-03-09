@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install -y mariadb-server
-EXPOSE 3306
+EXPOSE 8000
 
 LABEL version="1.0"
 LABEL description="MariaDB Server"
