@@ -1,6 +1,16 @@
-FROM alpine:latest
-EXPOSE 80:80
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt-get install -y mariadb-server
+EXPOSE 3306
 
-FROM mariadb:10.6.4-focal
+LABEL version="1.0"
+LABEL description="MariaDB Server"
+
+HEALTHCHECK --start-period=5m \
+  CMD mariadb -e 'SELECT @@datadir;' || exit 1
+
+CMD ["mysqld"]
+
+
 
 
